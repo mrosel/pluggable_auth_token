@@ -31,9 +31,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "devise"
-  spec.add_development_dependency "jwt"
-  spec.add_development_dependency "rack-cors"
+  spec.add_dependency "devise"
+  spec.add_dependency "jwt"
+  spec.add_dependency "rack-cors"
 
 
 end

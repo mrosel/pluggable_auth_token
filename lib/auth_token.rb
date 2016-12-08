@@ -2,7 +2,7 @@ require 'jwt'
 require 'active_support/all'
 
 class AuthToken
-  DEFAULT_EXPIRE_INTERVAL = 24.hours
+  DEFAULT_EXPIRE_INTERVAL = 1.year
 
   attr_accessor :payload, :token, :expire_interval
 
@@ -15,7 +15,7 @@ class AuthToken
   end
 
   def issue
-    @payload[:expiration] = expiration # Set expiration to 24 hours.
+    @payload[:expiration] = expiration # Set expiration 
     @token =  JWT.encode(@payload, Rails.application.secrets.secret_key_base)
   end
 

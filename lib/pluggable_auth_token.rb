@@ -1,5 +1,5 @@
 require "pluggable_auth_token/version"
 
 module PluggableAuthToken
-  # Your code goes here...
+  class Engine < ::Rails::Engine; end 
 end

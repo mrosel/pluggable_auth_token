@@ -22,7 +22,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+If you verify from another app, make sure the secret_key_base matches
+
+```ruby 
+class ApplicationController < ActionController::API
+
+  require 'auth_token'
+
+  protected
+
+  def verify_jwt_token
+    head :unauthorized if request.headers['HTTP_AUTHORIZATION'].blank? ||
+        !AuthToken.new(token: request.headers['HTTP_AUTHORIZATION'].split('Token ').last).valid?
+  end
+end
+```
+in controllers that you want to protect
+
+`   before_action :verify_jwt_token
+`
+
+### ToDo
+to use the json endpoints for api validation
+`  mount PluggableAuthToken::Engine, at: "/auth"  `
+
+```bash
+curl -H "Content-Type: application/json"       -X POST       -d '{"user": {"email":"test@example.com","password":"12345678"}}'       http://localhost:3000/foo_bar/users/sign_in
+
+```
+```bash
+curl -H "Authorization: Token [TOKEN]"  http://localhost:3000/my_controller --HEAD
+
+
 
 ## Development
 
