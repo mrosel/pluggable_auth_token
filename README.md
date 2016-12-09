@@ -20,6 +20,11 @@ Or install it yourself as:
 
     $ gem install pluggable_auth_token
 
+Make sure Devise is installed
+
+    $ rails generate devise:install
+    $ rails generate devise User
+
 ## Usage
 
 If you verify from another app, make sure the secret_key_base matches
@@ -47,12 +52,18 @@ to use the json endpoints for api validation
 `  mount PluggableAuthToken::Engine, at: "/auth"  `
 
 ```bash
-curl -H "Content-Type: application/json"       -X POST       -d '{"user": {"email":"test@example.com","password":"12345678"}}'       http://localhost:3000/foo_bar/users/sign_in
+curl -H "Content-Type: application/json" -X POST -d '{"user":{"email":"test@example.com","password":"12345678","password_confirm":"12345678"}}' http://localhost:3000/users/signup
+```
+
+```bash
+curl -H "Content-Type: application/json"       -X POST       -d '{"user": {"email":"test@example.com","password":"12345678"}}'       http://localhost:3000/auth/users/sign_in
 
 ```
+
+
 ```bash
 curl -H "Authorization: Token [TOKEN]"  http://localhost:3000/my_controller --HEAD
-
+```
 
 
 ## Development

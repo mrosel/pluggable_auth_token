@@ -1,7 +1,7 @@
 # Extend the devise sessions controller
 # to support JSON based authentication and issuing a JWT.
 class Users::SessionsController < Devise::SessionsController
-
+  skip_before_action :verify_authenticity_token
   require 'auth_token'
 
   def create
