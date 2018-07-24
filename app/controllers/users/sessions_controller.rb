@@ -18,7 +18,5 @@ class Users::SessionsController < Devise::SessionsController
     # contents = AuthToken.new(token: token).decoded
 
     render json: {user: resource.email, token: token}
-
   end
-
 end

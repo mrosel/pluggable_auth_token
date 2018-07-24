@@ -28,6 +28,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "devise"
   spec.add_dependency "jwt"
   spec.add_dependency "rack-cors"
-
-
 end
