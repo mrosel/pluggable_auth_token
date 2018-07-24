@@ -2,8 +2,9 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require 'bundler/setup'
 require 'rails/all'
 require 'devise'
+require "auth_token"
 require "pluggable_auth_token"
-# require 'rspec/rails'
+require 'pry'
 
 Bundler.setup
 Bundler.require(:default, Rails.env)

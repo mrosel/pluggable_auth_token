@@ -5,7 +5,6 @@ class Users::SessionsController < Devise::SessionsController
   require 'auth_token'
 
   def create
-
     # This is the default behavior from devise - view the sessions controller source:
     # https://github.com/plataformatec/devise/blob/master/app/controllers/devise/sessions_controller.rb#L16
     self.resource = warden.authenticate!(auth_options)
