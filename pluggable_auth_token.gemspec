@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "rails"
   spec.add_development_dependency "pry"
-
+  spec.add_development_dependency 'factory_bot'
   spec.add_dependency "devise"
   spec.add_dependency "jwt"
   spec.add_dependency "rack-cors"

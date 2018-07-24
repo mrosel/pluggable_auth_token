@@ -14,11 +14,6 @@ class AuthToken
     @token      ||= issue if args[:payload]
   end
 
-  def issue
-    @payload[:expiration] = expiration # Set expiration 
-    @token =  JWT.encode(@payload, Rails.application.secrets.secret_key_base)
-  end
-
   def valid?
     begin
       !expired? && !decoded.blank?
@@ -37,6 +32,17 @@ class AuthToken
   end
 
   def decoded
-    @token.blank? ? false : JWT.decode(@token, Rails.application.secrets.secret_key_base).first.symbolize_keys
+    @token.blank? ? false : JWT.decode(@token, secret).first.symbolize_keys
+  end
+
+  private
+
+  def issue
+    @payload[:expiration] = expiration # Set expiration
+    @token =  JWT.encode(@payload, secret)
+  end
+
+  def secret
+    @secret ||= Rails.application.secrets.secret_key_base
   end
 end
