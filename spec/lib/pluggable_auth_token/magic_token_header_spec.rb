@@ -38,7 +38,7 @@ describe PluggableAuthToken::MagicTokenHeader do
     expect(new_request.verify_jwt_token).to_not be_nil
   end
 
-# UnauthorizedError
+  # UnauthorizedError
   describe 'Failures' do
     let(:request) { instance_double("Request", :headers => { HTTP_AUTHORIZATION: "Token " }) }
     it { expect{new_request.valid_token}.to raise_error PluggableAuthToken::MagicTokenHeader::UnauthorizedError }
