@@ -1,14 +1,11 @@
 require 'spec_helper'
 
 describe PluggableAuthToken::MagicTokenHeader do
-  class MagicTokenHeader
-    include PluggableAuthToken::MagicTokenHeader
-  end
 
   let(:default_args) {{ payload: { user_id: 1 } }}
   let(:token) { AuthToken.new(default_args) }
   let(:request) { instance_double("Request", headers: { HTTP_AUTHORIZATION: "Token #{token.token}" }) }
-  let(:new_request) { MagicTokenHeader.new(headers: request.headers) }
+  let(:new_request) { described_class.new(headers: request.headers) }
 
   let!(:user) { double("User", id: 1) }
 

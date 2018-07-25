@@ -1,7 +1,7 @@
 # suite of helper functions authenticate a user based off a jwt
 # uses a jwt like a cookie and should never be exposed to the user
 module PluggableAuthToken
-  module MagicTokenHeader
+  class MagicTokenHeader
     def initialize(headers: )
       self.headers = headers.symbolize_keys
     end
