@@ -9,8 +9,9 @@ module PluggableAuthToken
     def verify_jwt_token
       !(authorization_header.blank? ||
           !valid_token)
-    rescue UnauthorizedError => error
-      show_unauthorized_errors(error)
+    # TODO: better error handling
+    # rescue UnauthorizedError => error
+    #   show_unauthorized_errors(error)
     end
 
     def jwt_user(id: :user_id)
